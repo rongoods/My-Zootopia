@@ -17,18 +17,18 @@ for animal in animals_data:
     output += '<li class="cards__item">'
     if 'name' in animal:
         name = animal['name']
-        output += f"Name: {name}<br/>\n"
+        output += f'<div class="card__title">{name}<br/>\n</div>'
     if 'characteristics' in animal and 'diet' in animal['characteristics']:
         diet = animal['characteristics']['diet']
-        output += f"Diet: {diet}<br/>\n"
+        output += f'<p class="card__text"><strong>Diet:</strong> {diet}<br/></p>'
     if 'locations' in animal:
         locations = animal['locations']
-        output += f"First Location: {locations[0]}<br/>\n"
+        output += f'<p class="card__text"><strong>First Location:</strong> {locations[0]}<br/></p>'
     if 'characteristics' in animal and 'type' in animal['characteristics']:
         type_of_animal = animal['characteristics']['type']
-        output += f"Type: {type_of_animal}<br/>\n"
+        output += f'<p class="card__text"><strong>Type:</strong> {type_of_animal}<br/></p>'
     output += '</li>'
-    output += "\n"
+
 print(output)
 
 finished_html = html_contents.replace("__REPLACE_ANIMALS_INFO__", output)
