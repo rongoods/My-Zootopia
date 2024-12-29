@@ -5,26 +5,30 @@ def read_html(template):
         return data.read()
 
 html_contents = read_html('animals_template.html')
+
 def load_data(file_path):
-    """ Loads a JSON file """
+    """Loads a JSON file."""
     with open(file_path, "r") as file:
         return json.load(file)
 
 def serialize_animal(animal_obj):
-    output = ''
-    output += '<li class="cards__item">\n'
+    """Generates HTML for a single animal."""
+    output = '<li class="cards__item">\n'
 
     if 'name' in animal_obj:
         output += f'<div class="card__title">{animal_obj["name"]}</div>\n'
+    
     if 'characteristics' in animal_obj and 'diet' in animal_obj['characteristics']:
-        output += f'<p class="card__text"><strong>Diet:</strong> {animal_obj["diet"]}</p>\n'
-    if 'locations' in animal_obj:
-        locations = animal_obj['locations']
-        output += f'<p class="card__text"><strong>First Location:</strong> {animal_obj["locations[0]"]}</p>\n'
+        output += f'<p class="card__text"><strong>Diet:</strong> {animal_obj["characteristics"]["diet"]}</p>\n'
+    
+    if 'locations' in animal_obj and animal_obj['locations']:
+        output += f'<p class="card__text"><strong>First Location:</strong> {animal_obj["locations"][0]}</p>\n'
+    
     if 'characteristics' in animal_obj and 'type' in animal_obj['characteristics']:
-        output += f'<p class="card__text"><strong>Type:</strong> {animal_obj["type_of_animal"]}</p>\n'
-    output += '</li>'
-    print(output)
+        output += f'<p class="card__text"><strong>Type:</strong> {animal_obj["characteristics"]["type"]}</p>\n'
+
+    output += '</li>\n'
+    return output
 
 def main():
     animals_data = load_data('animals_data.json')
