@@ -6,7 +6,7 @@ API_KEY = "aTap3/8ErjpLphigqe6Fcw==deLuV38G8sgyJ5ug"
 def fetch_animal_data(animal_name):
     url = "https://api.api-ninjas.com/v1/animals"
     headers = {
-        "X-Api-Key": aTap3/8ErjpLphigqe6Fcw==deLuV38G8sgyJ5ug
+        "X-Api-Key": API_KEY
     }
     params = {
         "name": animal_name
